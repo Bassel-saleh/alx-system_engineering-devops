@@ -17,7 +17,7 @@ test
 0-hello_world
 10-no_more_js
 11-directories
-12-newest_files
+12-newest_files root
 13-unique
 1-confused_smiley
 2-hellofile
