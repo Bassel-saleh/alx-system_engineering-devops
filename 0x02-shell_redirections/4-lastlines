@@ -1,2 +1,2 @@
 #!/bin/bash
-tail /etc/passwd | sed 's/^/_/'
+tail /etc/passwd
