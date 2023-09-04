@@ -1,2 +1,2 @@
 #!/bin/bash
-cat text | tr ' ' '\n' | sort | uniq -u
+cat "list of words" | tr ' ' '\n' | sort | uniq -u
