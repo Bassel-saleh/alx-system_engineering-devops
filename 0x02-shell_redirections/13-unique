@@ -1,2 +1,2 @@
 #!/bin/bash
-cat text | tr ' ' '\n' | sort | uniq -u
+cat input | awk '{++count[$0]} END {for (word in count) if (count[word] == 1) print word}' | sort
