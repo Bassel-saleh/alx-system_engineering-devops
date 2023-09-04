@@ -1,2 +1,2 @@
 #!/bin/bash
-cat "list of words" | tr ' ' '\n' | sort | uniq -u
+cat input.txt | sort | uniq -c | grep -E '^ +1 ' | sed 's/^ +1 //'
