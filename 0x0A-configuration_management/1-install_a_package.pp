@@ -1,6 +1,6 @@
 # install flask v(2.1.0)
 
-package { 'python3-pip':
+package { 'python3.8.1-pip':
   ensure => installed,
 }
 
