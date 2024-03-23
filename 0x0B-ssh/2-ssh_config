@@ -1,0 +1,4 @@
+# ssh config without a PasswordAuthentication and with private key ~/.ssh/school
+Host *
+      PasswordAuthentication no
+      IdentifyFile ~/.ssh/school
