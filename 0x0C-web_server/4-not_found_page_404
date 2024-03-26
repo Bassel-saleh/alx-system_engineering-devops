@@ -5,7 +5,8 @@ apt-get update
 apt-get -y install nginx
 ufw allow 'Nginx HTTP'
 echo 'Hello World!' > /var/www/html/index.html
-sudo echo "Ceci n'est pas une page" > /var/www/html/404.html
+echo "Ceci n'est pas une page" > 404.html
+sudo mv 404.html /var/www/html
 echo "server {
    listen 80 default_server;
    listen [::]:80 default_server;
