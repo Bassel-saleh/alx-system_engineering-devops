@@ -9,7 +9,7 @@ def number_of_subscribers(subreddit):
     """
 
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    headers = {"User-Agent": "BISSO/1.0"}
+    headers = {"User-Agent": "linux:0x16.api.advanced:v1.0.0"}
     rspns = requests.get(url, headers=headers, allow_redirects=False)
     if rspns.status_code == 404:
         return 0
