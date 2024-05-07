@@ -23,7 +23,7 @@ def top_ten(subreddit):
         "limit": 10
     }
     rspns = requests.get(url, headers=headers, params=params,
-                            allow_redirects=False)
+                         allow_redirects=False)
     if rspns.status_code == 404:
         print("None")
         return
