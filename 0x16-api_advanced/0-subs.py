@@ -12,7 +12,7 @@ def number_of_subscribers(subreddit):
     """
 
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    headers = {"User-Agent": "Mozzilla/5.0"}
+    headers = {"User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"}
     rspns = requests.get(url, headers=headers, allow_redirects=False)
     if rspns.status_code == 200:
         return rspns.json().get("data").get("subscribers")
