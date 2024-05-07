@@ -39,6 +39,8 @@ def recurse(subreddit, hot_list=[], after="", count=0):
         result = rspns.json().get("data")
     except json.JSONDecodeError:
         return None
+    if not result or not result.get("children"):
+        return None
     after = result.get("after")
     count += result.get("dist")
     for c in result.get("children"):
