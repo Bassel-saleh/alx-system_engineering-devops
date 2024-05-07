@@ -11,11 +11,6 @@ def number_of_subscribers(subreddit):
 
     Args:
         subreddit (str): The name of the subreddit.
-        hot_list (list, optional): List to store the post titles.
-                                    Default is an empty list.
-        after (str, optional): Token used for pagination.
-                                Default is an empty string.
-        count (int, optional): Current count of retrieved posts. Default is 0.
 
     Returns:
         the number of subscribers or 0
