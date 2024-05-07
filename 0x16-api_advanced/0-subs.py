@@ -21,7 +21,7 @@ def number_of_subscribers(subreddit):
         "User-Agent": "MyRedditScraper/1.0 (Contact: basselh26@gmail.com)"
     }
     rspns = requests.get(url, headers=headers, allow_redirects=False)
-    if rspns.status_code >= 300 and rspns.status_code < 400:
+    if 'Search results' in rspns.text:
         return 0
     if rspns.status_code != 200:
         return 0
@@ -29,4 +29,5 @@ def number_of_subscribers(subreddit):
         result = rspns.json().get("data")
     except json.JSONDecodeError:
         return 0
+
     return result.get("subscribers", 0)
