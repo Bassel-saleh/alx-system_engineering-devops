@@ -2,6 +2,7 @@
 """
 Script that queries subscribers on a given Reddit subreddit.
 """
+import json
 import requests
 
 
@@ -20,6 +21,10 @@ def number_of_subscribers(subreddit):
         "User-Agent": "MyRedditScraper/1.0 (Contact: basselh26@gmail.com)"
     }
     rspns = requests.get(url, headers=headers, allow_redirects=False)
-    if rspns.status_code == 200:
-        return rspns.json().get("data").get("subscribers")
-    return 0
+    if rspns.status_code != 200:
+        return 0
+    try:
+        result = rspns.json().get("data")
+    except json.JSONDecodeError:
+        return None
+    return result.get("subscribers")
