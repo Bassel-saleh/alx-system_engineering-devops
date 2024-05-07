@@ -8,23 +8,25 @@ import requests
 
 def number_of_subscribers(subreddit):
     """
-    returns the number of subscribers for a given subreddit
+    Returns the number of subscribers for a given subreddit.
 
     Args:
         subreddit (str): The name of the subreddit.
 
     Returns:
-        the number of subscribers or 0
+        int: The number of subscribers, or 0 if the subreddit is invalid.
     """
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     headers = {
         "User-Agent": "MyRedditScraper/1.0 (Contact: basselh26@gmail.com)"
     }
     rspns = requests.get(url, headers=headers, allow_redirects=False)
+    if rspns.status_code >= 300 and rspns.status_code < 400:
+        return 0
     if rspns.status_code != 200:
         return 0
     try:
         result = rspns.json().get("data")
     except json.JSONDecodeError:
-        return None
-    return result.get("subscribers")
+        return 0
+    return result.get("subscribers", 0)
