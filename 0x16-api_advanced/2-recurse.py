@@ -2,6 +2,7 @@
 import requests
 import json
 
+
 def recurse(subreddit, hot_list=[], after="", count=0):
     """
     Recursively retrieves a list of titles of all hot posts
@@ -27,7 +28,8 @@ def recurse(subreddit, hot_list=[], after="", count=0):
         "count": count,
         "limit": 100
     }
-    rspns = requests.get(url, headers=headers, params=params, allow_redirects=False)
+    rspns = requests.get(url, headers=headers, params=params,
+                         allow_redirects=False)
     if rspns.status_code != 200:
         return None
 
