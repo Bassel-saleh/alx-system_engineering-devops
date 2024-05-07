@@ -35,12 +35,10 @@ def recurse(subreddit, hot_list=[], after="", count=0):
                          allow_redirects=False)
     if rspns.status_code != 200:
         return None
-
     try:
         result = rspns.json().get("data")
     except json.JSONDecodeError:
         return None
-
     after = result.get("after")
     count += result.get("dist")
     for c in result.get("children"):
