@@ -13,13 +13,10 @@ def recurse(subreddit, hot_list=[], after="", count=0):
     Args:
         subreddit: The name of the subreddit
         hot_list: List to store the post titles
-                                    Default is an empty list
-        after (str, optional): Token used for pagination
-                                Default is an empty string
-        count (int, optional): Current count of retrieved posts. Default is 0
 
     Returns:
         list: A list of post titles from the hot section of the subreddit
+        if not valid returns None
     """
     url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
     headers = {
