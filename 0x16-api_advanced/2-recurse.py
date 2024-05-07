@@ -11,8 +11,8 @@ def recurse(subreddit, hot_list=[], after="", count=0):
     on a given subreddit
 
     Args:
-        subreddit (str): The name of the subreddit
-        hot_list (list, optional): List to store the post titles
+        subreddit: The name of the subreddit
+        hot_list: List to store the post titles
                                     Default is an empty list
         after (str, optional): Token used for pagination
                                 Default is an empty string
