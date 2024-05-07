@@ -1,9 +1,6 @@
 #!/usr/bin/python3
-"""
-Script to query a list of all hot posts on a given Reddit subreddit
-"""
 import requests
-
+import json
 
 def recurse(subreddit, hot_list=[], after="", count=0):
     """
@@ -11,12 +8,15 @@ def recurse(subreddit, hot_list=[], after="", count=0):
     on a given subreddit
 
     Args:
-        subreddit: The name of the subreddit
-        hot_list: List to store the post titles
+        subreddit (str): The name of the subreddit
+        hot_list (list, optional): List to store the post titles
+                                    Default is an empty list
+        after (str, optional): Token used for pagination
+                                Default is an empty string
+        count (int, optional): Current count of retrieved posts. Default is 0
 
     Returns:
         list: A list of post titles from the hot section of the subreddit
-        if not valid returns None
     """
     url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
     headers = {
@@ -27,11 +27,21 @@ def recurse(subreddit, hot_list=[], after="", count=0):
         "count": count,
         "limit": 100
     }
-    rspns = requests.get(url, headers=headers, params=params,
-                         allow_redirects=False)
-    if rspns.status_code == 404:
+    rspns = requests.get(url, headers=headers, params=params, allow_redirects=False)
+    
+    # Check if the response status code is not 200 (OK)
+    if rspns.status_code != 200:
+        print("Error: Unable to retrieve data from Reddit API")
         return None
-    result = rspns.json().get("data")
+
+    try:
+        # Try to parse the response JSON
+        result = rspns.json().get("data")
+    except json.JSONDecodeError:
+        # Handle JSON decoding error
+        print("Error: Unable to decode JSON response")
+        return None
+
     after = result.get("after")
     count += result.get("dist")
     for c in result.get("children"):
