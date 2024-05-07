@@ -28,18 +28,12 @@ def recurse(subreddit, hot_list=[], after="", count=0):
         "limit": 100
     }
     rspns = requests.get(url, headers=headers, params=params, allow_redirects=False)
-    
-    # Check if the response status code is not 200 (OK)
     if rspns.status_code != 200:
-        print("Error: Unable to retrieve data from Reddit API")
         return None
 
     try:
-        # Try to parse the response JSON
         result = rspns.json().get("data")
     except json.JSONDecodeError:
-        # Handle JSON decoding error
-        print("Error: Unable to decode JSON response")
         return None
 
     after = result.get("after")
