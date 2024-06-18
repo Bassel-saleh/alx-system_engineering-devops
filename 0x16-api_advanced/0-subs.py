@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Script that queries subscribers on a given Reddit subreddit.
+Script that queries subscribers on a given Reddit subreddit
 """
 import json
 import requests
@@ -8,13 +8,13 @@ import requests
 
 def number_of_subscribers(subreddit):
     """
-    Returns the number of subscribers for a given subreddit.
+    Returns the number of subscribers for a given subreddit
 
     Args:
-        subreddit (str): The name of the subreddit.
+        subreddit (str): The name of the subreddit
 
     Returns:
-        int: The number of subscribers, or 0 if the subreddit is invalid.
+        int: The number of subscribers, or 0 if the subreddit is invalid
     """
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     headers = {

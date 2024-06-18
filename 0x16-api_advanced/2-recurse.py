@@ -9,7 +9,7 @@ import requests
 def recurse(subreddit, hot_list=[], after="", count=0):
     """
     Recursively retrieves a list of titles of all hot posts
-    on a given subreddit
+    on a given subreddit currently
 
     Args:
         subreddit (str): The name of the subreddit
