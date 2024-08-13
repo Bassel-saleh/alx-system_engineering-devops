@@ -6,4 +6,4 @@ this project is only for learning purposes
 * How to parse JSON results from an API
 * How to make a recursive API call
 * How to sort a dictionary by value
-##### Have fun learning  ;)
+##### Have fun learning ;)
